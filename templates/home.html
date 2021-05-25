@@ -1,0 +1,23 @@
+{%  extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<!-- Show all Playlists -->
+<h3>Playlists</h3><hr>
+{% for playlist in playlists %}
+<div class="">
+
+  <div class="w3-btn w3-ripple w3-text-blue">
+
+    <h3><a href="/playlist_detail/{{ playlist.id }}"> {{ playlist.name }} </a></h3>
+  </div>
+
+</div>
+{% endfor %}
+<hr>
+<!-- Button to add a playlist -->
+<div class="w3-btn w3-ripple w3-border w3-round w3-dark-grey"><a href="/playlist/add">Add A Playlist</a></div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+
+<h1>Add Song to Playlist</h1>
+
+<form action="/add_song_to_playlist" method="post">
+  {{form.hidden_tag()}}
+  {% for field in form
+      if field.widget.input_type != 'hidden' %}
+    <p>
+      {{field.label}}
+      {{field}}
+
+      {% for error in field.errors %}
+        <i class="w3-text-red">{{error}}</i>
+      {% endfor %}
+    </p>
+  {% endfor %}
+  <button>Add Song to playlist</button>
+</form>
+
+{% endblock %}
