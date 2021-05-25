@@ -8,16 +8,16 @@
 <h3>Playlists</h3><hr>
 {% for playlist in playlists %}
 <div class="">
-
-  <div class="w3-btn w3-ripple w3-text-blue">
-
-    <h3><a href="/playlist_detail/{{ playlist.id }}"> {{ playlist.name }} </a></h3>
-  </div>
+  <a href="/playlist_detail/{{ playlist.id }}">
+    <div class="w3-btn w3-ripple w3-text-blue w3-light-grey w3-hover-grey" style="width:100%;">
+      <h3 class="w3-left"> {{ playlist.name }} </h3>
+    </div>
+  </a>
 
 </div>
 {% endfor %}
 <hr>
 <!-- Button to add a playlist -->
-<div class="w3-btn w3-ripple w3-border w3-round w3-dark-grey"><a href="/playlist/add">Add A Playlist</a></div>
+<a href="/add_playlist"><div class="w3-btn w3-ripple w3-border w3-round w3-blue">Add A Playlist</div></a>
 
 {% endblock %}

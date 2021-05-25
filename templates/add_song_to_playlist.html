@@ -4,7 +4,7 @@
 
 <h1>Add Song to Playlist</h1>
 
-<form action="/add_song_to_playlist" method="post">
+<form action="/playlist/{{ playlist.id }}/add-song" method="post">
   {{form.hidden_tag()}}
   {% for field in form
       if field.widget.input_type != 'hidden' %}

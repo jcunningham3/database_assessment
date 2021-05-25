@@ -43,23 +43,25 @@ def add_show_playlists():
 @app.route('/playlist_detail/<int:id>')
 def playlist_details(id):
     # show playlist details including song list
+    id = id
     playlist = Playlist.query.get_or_404(id)
-    return render_template('playlist_detail.html', playlist=playlist)
+    playlist_songs = PlaylistSong.query.all()
+    return render_template('playlist_detail.html', playlist=playlist, playlist_songs=playlist_songs, id=id)
 
-@app.route('/add_song_to_playlist/<int:id>', methods=["GET", "POST"])
+@app.route("/playlist/<int:id>/add-song", methods=["GET", "POST"])
 def add_song_to_playlist(id):
-    # add a playlist and view playlist songs
+
+    playlist = Playlist.query.get_or_404(id)
     form = AddSongToPlaylist()
-
-    songs = db.session.query(Song.title, Song.artist)
-    form.songs.choices = songs
+    form.song.choices = [(song.id, song.title) for song in Song.query.all()]
+    song_id = form.song.data
     if form.validate_on_submit():
-        songs = form.songs.data
+        playlist_song = PlaylistSong(playlist_id=id, song_id=song_id)
+        db.session.add(playlist_song)
+        db.session.commit()
+        return redirect(f"/playlist_detail/{id}")
 
-        return redirect("/playlist_detail/<int:id>")
-
-    else:
-        return render_template("add_song_to_playlist.html", form=form)
+    return render_template("add_song_to_playlist.html", playlist=playlist, form=form)
 
 
 # SONG ROUTES-------------------------------------------------------------------

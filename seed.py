@@ -18,7 +18,7 @@ db.session.add(p1)
 db.session.add(s1)
 db.session.add(s2)
 
-
-
+db.session.add(p1s1)
+db.session.add(p1s2)
 
 db.session.commit()

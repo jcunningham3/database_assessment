@@ -4,14 +4,20 @@
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
   </head>
-  <body style="text-decorations: none;">
+  <body>
+    <style media="screen">
+      A {
+        text-decoration: none;
+      }
+    </style>
     <!-- nav -->
     <div class="w3-bar w3-dark-grey">
-      <div class="w3-bar-item w3-btn w3-ripple w3-text-blue">
+      <div class="w3-bar-item w3-btn w3-ripple w3-text-blue w3-padding">
         <h3><a href="/">Playlists</a></h3>
       </div>
-      <div class="w3-bar-item w3-right w3-btn w3-ripple w3-text-blue">
+      <div class="w3-bar-item w3-right w3-btn w3-ripple w3-text-blue w3-padding">
         <h5><a href="/songs">all songs</a></h5>
       </div>
     </div>

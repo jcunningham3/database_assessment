@@ -29,3 +29,6 @@ class PlaylistSong(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     playlist_id = db.Column(db.Integer, db.ForeignKey('playlists.id'))
     song_id = db.Column(db.Integer, db.ForeignKey('songs.id'))
+
+    song = db.relationship('Song', backref="playlist_songs")
+    playlist = db.relationship('Playlist', backref="playlist_songs")

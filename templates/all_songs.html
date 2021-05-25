@@ -7,18 +7,18 @@
 <!-- Show all Playlists -->
 <h3>All Songs</h3>
 {% for song in all_songs %}
-<div class="">
-
-  <div class="w3-btn w3-ripple w3-text-blue">
-
-    <h3><a href="/song_detail/{{ song.id }}">{{ song.title }}</a></h3>
+<div class="w3-light-grey">
+  <div class="w3-btn w3-ripple w3-text-blue  w3-hover-grey">
+    <a href="/song_detail/{{ song.id }}">{{ song.title }}</a>
+    <i class="w3-tiny w3-text-black"> {{ song.artist }}</i>
   </div>
-
+  <div class="w3-btn w3-tiny w3-text-indigo">edit</div>
+  <div class="w3-btn w3-tiny w3-text-red">delete</div>
 </div>
 {% endfor %}
 <hr>
 <!-- BUtton to add a playlist -->
-<div class="w3-btn w3-ripple w3-border w3-round w3-text-green">
+<div class="w3-btn w3-ripple w3-border w3-round w3-blue">
   <h5><a href="/add_song">Add Song</a></h5>
 </div>
 
