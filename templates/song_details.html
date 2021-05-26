@@ -8,5 +8,7 @@
 <!-- Show all Playlists -->
 <h3>Title: {{song.title}}</h3>
 <h5>Artist: {{ song.artist }}</h5>
+<div class="w3-btn w3-tiny w3-text-indigo">edit</div>
+<a href="/delete_song/{{ song.id }}"><div class="w3-btn w3-tiny w3-text-red">delete</div></a>
 
 {% endblock %}

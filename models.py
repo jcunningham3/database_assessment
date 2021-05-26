@@ -27,8 +27,8 @@ class PlaylistSong(db.Model):
     __tablename__ = "playlist_songs"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    playlist_id = db.Column(db.Integer, db.ForeignKey('playlists.id'))
-    song_id = db.Column(db.Integer, db.ForeignKey('songs.id'))
+    playlist_id = db.Column(db.Integer, db.ForeignKey('playlists.id', ondelete="cascade"))
+    song_id = db.Column(db.Integer, db.ForeignKey('songs.id', ondelete="cascade"))
 
-    song = db.relationship('Song', backref="playlist_songs")
-    playlist = db.relationship('Playlist', backref="playlist_songs")
+    song = db.relationship('Song', backref="playlist_songs", cascade="all, delete")
+    playlist = db.relationship('Playlist', backref="playlist_songs", cascade="all, delete")

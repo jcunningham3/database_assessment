@@ -6,25 +6,22 @@
 
 <h3>Playlist Details</h3>
 <!-- Show all Playlists -->
-<div class="w3-card-4 w3-grey w3-padding">
+<div class="w3-card-4 w3-light-grey w3-padding">
   <h1>{{playlist.name}}</h1>
-  <h5>{{ playlist.description }}</h5><hr>
-  <ol>
-    {% for playlist_song in playlist_songs%}
-    {% if playlist_song.playlist_id == id %}
-    <li>
-      <div class="w3-cell">{{ playlist_song.song.title }} <i class="w3-tiny">{{ playlist_song.song.artist }}</i></div>
-      <div class="w3-cell">
-        <div class="w3-tiny w3-btn w3-ripple w3-text-indigo">edit</div>
-        <div class="w3-tiny w3-btn w3-ripple w3-text-red">remove</div>
-      </div>
-    </li>
-    {% endif %}
-    {% endfor %}
-  </ol>
+  <h5>{{ playlist.description }}</h5>
+
+  {% for playlist_song in playlist_songs %}
+  {% if playlist_song.playlist_id == id %}
+  <div class="w3-light-grey">
+    <a href="/song_detail/{{ playlist_song.song.id }}">
+      <div class="w3-btn w3-ripple w3-text-blue w3-hover-grey">{{ playlist_song.song.title }}<i class="w3-tiny w3-text-black"> {{ playlist_song.song.artist }}</i></div>
+    </a>
+  </div>
+  {% endif %}
+  {% endfor %}
 
 </div><br>
 
-<div class="w3-btn w3-ripple w3-border w3-round w3-dark-grey"><a href="/playlist/{{ playlist.id }}/add-song">add song to playlist</a></div>
+<div class="w3-btn w3-ripple w3-border w3-round w3-blue"><a href="/playlist/{{ playlist.id }}/add-song">add song to playlist</a></div>
 
 {% endblock %}

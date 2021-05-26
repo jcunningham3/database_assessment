@@ -92,3 +92,10 @@ def add_song():
 
     else:
         return render_template("add_song_form.html", form=form)
+
+@app.route('/delete_song/<int:id>', methods=["GET","POST"])
+def delete_song(id):
+    song = Song.query.get_or_404(id)
+    db.session.delete(song)
+    db.session.commit()
+    return redirect('/songs')
